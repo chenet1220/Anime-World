@@ -24,6 +24,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         ) : (
+          // rout
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LogInPage setUser={setUser} />} />
