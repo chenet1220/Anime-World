@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Comment = require('../models/comment'); // Import the Comment model
+const Comment = require('../models/comment'); //import the Comment model
 const ensureLoggedIn = require('../middleware/ensureLoggedIn'); 
 
 // GET all comments
@@ -13,13 +13,12 @@ router.get('/', async (req, res) => {
     }
 });
 
-
-// POST a new comment   //push this first to git hub 
+// POST a new comment
 router.post('/', async (req, res) => {
     try {
         const comment = new Comment({
             text: req.body.text,
-            user: req.user._id, // the user is logged in and available in req.user
+            user: req.user._id, // The user ID is automatically added to the request object by the checkToken middleware
             post: req.body.postId // The post ID should be passed in the request body
         });
         await comment.save();
