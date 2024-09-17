@@ -5,6 +5,7 @@ const animeRoutes = require('./routes/anime');
 const authRoutes = require('./routes/auth');
 const commentRoutes = require('./routes/comments');
 const cors = require('cors');
+const likeRoutes = require('./routes/userLikes');
 
 // Initialize environment variables
 dotenv.config();
@@ -25,6 +26,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use('/api/anime', animeRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/comments', commentRoutes);
+app.use('/api/userLikes', likeRoutes);
 
 
 const port = process.env.PORT || 3000;
