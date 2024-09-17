@@ -1,6 +1,36 @@
 import { useState } from 'react';
 import * as authService from '../../services/authService';
 
+import { useNavigate } from "react-router-dom";  // new line above 
+
+//////////
+
+function LoginPage() {
+  const navigate = useNavigate();
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    // Make API call for login
+    const response = await loginUser(credentials);
+
+    if (response.success) {
+      // Redirect to Anime Gallery
+      navigate("/anime-gallery");
+    } else {
+      // Handle login failure
+    }
+  };
+
+  return (
+    <form onSubmit={handleLogin}>
+      {/* Form fields */}
+      <button type="submit">Login</button>
+    </form>
+  );
+}
+
+//////////////
+
 export default function LogInPage({ setUser }) {
   const [formData, setFormData] = useState({
     email: '',

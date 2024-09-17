@@ -1,12 +1,17 @@
+// const express = require('express');
+// const { signup, login } = require('../controllers/auth');
+// const router = express.Router();
+
+// router.post('/signup', signup);
+// router.post('/login', login);
+
+// module.exports = router;
+
 const express = require('express');
+const { register, login } = require('../controllers/auth');
 const router = express.Router();
-const authCtrl = require('../controllers/auth');
 
-// All paths start with '/api/auth'
-
-// POST /api/auth/signup
-router.post('/signup', authCtrl.signup);
-// POST /api/auth/login
-router.post('/login', authCtrl.login);
+router.post('/register', register);
+router.post('/login', login);
 
 module.exports = router;
