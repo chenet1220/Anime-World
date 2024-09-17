@@ -12,7 +12,7 @@ const AnimeDetails = () => {
       .then(response => setAnime(response.data.data))
       .catch(error => console.error(error));
 
-    axios.get(`http://localhost:5173/api/comments/${animeId}`)
+    axios.get(`/api/comments/${animeId}`)
       .then(response => setComments(response.data))
       .catch(error => console.error(error));
   }, [animeId]);

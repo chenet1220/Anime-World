@@ -6,7 +6,7 @@ const AnimeGalleryPage = () => {
   const [animeList, setAnimeList] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5173/api/anime')
+    axios.get('/api/anime')
       .then(response => setAnimeList(response.data.data))
       .catch(error => console.error(error));
   }, []);

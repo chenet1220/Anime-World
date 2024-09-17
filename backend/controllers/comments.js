@@ -1,6 +1,6 @@
-const Comment = require('../models/commentModel');
+const Comment = require('../models/comments');
 
-exports.addComment = async (req, res) => {
+const addComment = async (req, res) => {
   try {
     const { animeId, comment, rating } = req.body;
     const newComment = new Comment({
@@ -16,7 +16,7 @@ exports.addComment = async (req, res) => {
   }
 };
 
-exports.getCommentsByAnime = async (req, res) => {
+const getCommentsByAnime = async (req, res) => {
   try {
     const { animeId } = req.params;
     const comments = await Comment.find({ animeId }).populate('user', 'username');
@@ -26,3 +26,7 @@ exports.getCommentsByAnime = async (req, res) => {
   }
 };
 
+module.exports = { 
+  addComment, 
+  getCommentsByAnime, 
+};

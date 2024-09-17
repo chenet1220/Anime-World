@@ -58,7 +58,7 @@
 
 
 const express = require('express');
-const Comment = require('../models/comments');
+const commentsController = require('../controllers/comments');
 const checkToken = require('../middleware/checkToken');
 const router = express.Router();
 
@@ -72,13 +72,8 @@ router.post('/:animeId', checkToken, async (req, res) => {
   res.status(201).json(comment);
 });
 
-router.put('/:commentId', checkToken, async (req, res) => {
-  const { commentId } = req.params;
-  const { text, rating } = req.body;
-
-  const comment = await Comment.findByIdAndUpdate(commentId, { text, rating, updatedAt: Date.now() }, { new: true });
-  res.json(comment);
-});
+router.put('/:commentId',checkToken, commentsController.addComment);
+router.get('/:commentId', checkToken, commentsController.getCommentsByAnime)
 
 router.delete('/:commentId', checkToken, async (req, res) => {
   await Comment.findByIdAndDelete(req.params.commentId);

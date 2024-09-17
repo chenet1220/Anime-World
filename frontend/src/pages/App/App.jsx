@@ -39,22 +39,22 @@
 
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import AnimeGalleryPage from './pages/AnimeGalleryPage';
-import AnimeDetails from './components/AnimeDetails';
-import LoginPage from './pages/LoginPage';
-import SignUpPage from './pages/SignUpPage';
+import { Routes, Route } from 'react-router-dom';
+import AnimeGalleryPage from '../AnimeGalleryPage';
+import AnimeDetails from '../AnimeDetails';
+import LoginPage from '../LogInPage/LogInPage';
+import SignUpPage from '../SignUpPage/SignUpPage';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={AnimeGalleryPage} />
-        <Route path="/anime/:animeId" component={AnimeDetails} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/signup" component={SignUpPage} />
-      </Switch>
-    </Router>
+    <Routes>
+  
+        <Route path="/" element={AnimeGalleryPage} />
+        <Route path="/anime/:animeId" element={AnimeDetails} />
+        <Route path="/login" element={LoginPage} />
+        <Route path="/signup" element={SignUpPage} />
+  
+    </Routes>
   );
 }
 
