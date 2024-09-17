@@ -44,17 +44,21 @@ import AnimeGalleryPage from '../AnimeGalleryPage';
 import AnimeDetails from '../AnimeDetails';
 import LoginPage from '../LogInPage/LogInPage';
 import SignUpPage from '../SignUpPage/SignUpPage';
+import NavBar from '../../components/NavBar/NavBar';
 
 function App() {
   return (
+    <>
+    <NavBar />
     <Routes>
   
-        <Route path="/" element={AnimeGalleryPage} />
-        <Route path="/anime/:animeId" element={AnimeDetails} />
-        <Route path="/login" element={LoginPage} />
-        <Route path="/signup" element={SignUpPage} />
+        <Route path="/" element={<AnimeGalleryPage />} />
+        <Route path="/anime/:animeId" element={<AnimeDetails />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
   
     </Routes>
+    </>
   );
 }
 
