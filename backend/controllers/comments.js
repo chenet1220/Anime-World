@@ -1,76 +1,82 @@
-const express = require('express');
-const Comment = require('../models/comment');
-const router = express.Router();
+const Comment = require('../models/comments')
 
 // Create a new comment
-router.post('/', async (req, res) => {
+const createComment = async (req, res) => {
   try {
-    const comment = new Comment(req.body);
-    await comment.save();
-    res.status(201).send(comment);
+    const comment = new Comment(req.body)
+    await comment.save()
+    res.status(201).send(comment)
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send(error)
   }
-});
+}
 
-// Read all comments
-router.get('/', async (req, res) => {
+// Read all comments for a specific anime
+const getCommentsByAnimeId = async (req, res) => {
   try {
-    const comments = await Comment.find({});
-    res.status(200).send(comments);
+    const comments = await Comment.find({ animeId: req.params.animeId })
+    res.status(200).send(comments)
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).send(error)
   }
-});
+}
 
 // Read a single comment by ID
-router.get('/:id', async (req, res) => {
+const getCommentById = async (req, res) => {
   try {
-    const comment = await Comment.findById(req.params.id);
+    const comment = await Comment.findById(req.params.id).populate('userId')
     if (!comment) {
-      return res.status(404).send();
+      return res.status(404).send()
     }
-    res.status(200).send(comment);
+    res.status(200).send(comment)
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).send(error)
   }
-});
+}
 
 // Update a comment by ID
-router.patch('/:id', async (req, res) => {
-  const updates = Object.keys(req.body);
-  const allowedUpdates = ['text', 'author']; // Add other fields that can be updated
-  const isValidOperation = updates.every(update => allowedUpdates.includes(update));
+const updateCommentById = async (req, res) => {
+  const updates = Object.keys(req.body)
+  const allowedUpdates = ['text', 'author'] // Add other fields that can be updated
+  const isValidOperation = updates.every((update) =>
+    allowedUpdates.includes(update)
+  )
 
   if (!isValidOperation) {
-    return res.status(400).send({ error: 'Invalid updates!' });
+    return res.status(400).send({ error: 'Invalid updates!' })
   }
 
   try {
-    const comment = await Comment.findById(req.params.id);
+    const comment = await Comment.findById(req.params.id)
     if (!comment) {
-      return res.status(404).send();
+      return res.status(404).send()
     }
 
-    updates.forEach(update => comment[update] = req.body[update]);
-    await comment.save();
-    res.status(200).send(comment);
+    updates.forEach((update) => (comment[update] = req.body[update]))
+    await comment.save()
+    res.status(200).send(comment)
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send(error)
   }
-});
+}
 
 // Delete a comment by ID
-router.delete('/:id', async (req, res) => {
+const deleteCommentById = async (req, res) => {
   try {
-    const comment = await Comment.findByIdAndDelete(req.params.id);
+    const comment = await Comment.findByIdAndDelete(req.params.id)
     if (!comment) {
-      return res.status(404).send();
+      return res.status(404).send()
     }
-    res.status(200).send(comment);
+    res.status(200).send(comment)
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).send(error)
   }
-});
+}
 
-module.exports = router;
+module.exports = {
+  createComment,
+  getCommentsByAnimeId,
+  getCommentById,
+  updateCommentById,
+  deleteCommentById
+}

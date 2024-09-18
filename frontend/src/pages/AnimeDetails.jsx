@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import CommentSection from './Comments'; // Import comment section
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import CommentSection from '../components/Comments' // Import comment section
+import * as animeService from '../services/animeService'
+import * as commentService from '../services/commentService'
 
-
-const AnimeDetails = () => {
-  const { animeId } = useParams();
-  const [anime, setAnime] = useState(null);
-  const [comments, setComments] = useState([]);
+const AnimeDetails = ({ username, userId }) => {
+  const { animeId } = useParams()
+  const [anime, setAnime] = useState(null)
+  const [comments, setComments] = useState([])
 
   useEffect(() => {
-    axios.get(`https://api.jikan.moe/v4/anime/${animeId}`)
-      .then(response => setAnime(response.data.data))
-      .catch(error => console.error(error));
+    animeService
+      .getAnimeDetails(animeId)
+      .then((anime) => setAnime(anime))
+      .catch((error) => console.error(error))
 
-    axios.get(`/api/comments/${animeId}`)
-      .then(response => setComments(response.data))
-      .catch(error => console.error(error));
-  }, [animeId]);
+    commentService
+      .getComments(animeId)
+      .then((comments) => setComments(comments))
+      .catch((error) => console.error(error))
+  }, [animeId])
 
   return (
     <div>
@@ -28,9 +30,15 @@ const AnimeDetails = () => {
           <p>{anime.synopsis}</p>
         </>
       )}
-      <CommentSection comments={comments} />
+      <CommentSection
+        animeId={animeId}
+        userId={userId}
+        username={username}
+        comments={comments}
+        setComments={setComments}
+      />
     </div>
-  );
-};
+  )
+}
 
-export default AnimeDetails;
+export default AnimeDetails

@@ -77,6 +77,3 @@ function createJWT(user) {
 // };
 
 // module.exports = { register, login }
-
-
-

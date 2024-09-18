@@ -1,84 +1,123 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react'
+import {
+  postComment,
+  updateComment,
+  deleteComment
+} from '../services/commentService'
 
-const CommentSection = ({ animeId, userId, username }) => {
-    const [comments, setComments] = useState([]);
-    const [newComment, setNewComment] = useState('');
+const CommentSection = ({
+  animeId,
+  userId,
+  username,
+  comments,
+  setComments
+}) => {
+  const [newCommentText, setNewCommentText] = useState('')
+  const [editingCommentId, setEditingCommentId] = useState(null)
+  const [editingText, setEditingText] = useState('')
 
-    // Fetch comments when the component loads
-    useEffect(() => {
-        axios.get(`/api/comments/${animeId}`)
-            .then(response => setComments(response.data))
-            .catch(error => console.error('Error fetching comments:', error));
-    }, [animeId]);
+  const handleAddComment = async (e) => {
+    e.preventDefault()
+    try {
+      const newComment = await postComment({
+        animeId,
+        userId,
+        username,
+        text: newCommentText
+      })
+      setComments((prevComments) => [...prevComments, newComment])
+      setNewCommentText('')
+    } catch (error) {
+      console.error('Failed to add comment', error)
+    }
+  }
 
-    // Handle submitting a new comment
-    const handleCommentSubmit = (e) => {
-        e.preventDefault();
+  const startEditing = (commentId, currentText) => {
+    setEditingCommentId(commentId)
+    setEditingText(currentText)
+  }
 
-        axios.post('/api/comments', { animeId, userId, username, text: newComment })
-            .then(response => {
-                setComments([...comments, response.data]);
-                setNewComment('');
-            })
-            .catch(error => console.error('Error posting comment:', error));
-    };
+  const cancelEditing = () => {
+    setEditingCommentId(null)
+    setEditingText('')
+  }
 
-    // Handle deleting a comment
-    const handleDeleteComment = (commentId) => {
-        axios.delete(`/api/comments/${commentId}`)
-            .then(() => {
-                setComments(comments.filter(comment => comment._id !== commentId));
-            })
-            .catch(error => console.error('Error deleting comment:', error));
-    };
+  const submitEdit = async (e) => {
+    e.preventDefault()
+    try {
+      await updateComment(editingCommentId, { text: editingText })
+      setComments((prevComments) =>
+        prevComments.map((comment) =>
+          comment._id === editingCommentId
+            ? { ...comment, text: editingText }
+            : comment
+        )
+      )
+      cancelEditing()
+    } catch (error) {
+      console.error('Failed to update comment', error)
+    }
+  }
 
-    // Handle editing a comment
-    const handleEditComment = (commentId, updatedText) => {
-        axios.put(`/api/comments/${commentId}`, { text: updatedText })
-            .then(response => {
-                setComments(comments.map(comment => comment._id === commentId ? response.data : comment));
-            })
-            .catch(error => console.error('Error editing comment:', error));
-    };
+  const handleDelete = async (commentId) => {
+    try {
+      await deleteComment(commentId)
+      setComments((prevComments) =>
+        prevComments.filter((comment) => comment._id !== commentId)
+      )
+    } catch (error) {
+      console.error('Failed to delete comment', error)
+    }
+  }
 
-    return (
-        <div className="comment-section">
-            <h2>Comments</h2>
-
-            {/* Comment form */}
-            <form onSubmit={handleCommentSubmit}>
+  return (
+    <div>
+      <form onSubmit={handleAddComment}>
+        <textarea
+          value={newCommentText}
+          onChange={(e) => setNewCommentText(e.target.value)}
+          placeholder="Add a comment"
+          required
+        />
+        <button type="submit">Add Comment</button>
+      </form>
+      <ul>
+        {comments.map((comment) => (
+          <li key={comment._id}>
+            {editingCommentId === comment._id ? (
+              <form onSubmit={submitEdit}>
                 <textarea
-                    value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
-                    placeholder="Add a comment..."
-                    required
+                  value={editingText}
+                  onChange={(e) => setEditingText(e.target.value)}
+                  required
                 />
-                <button type="submit">Post Comment</button>
-            </form>
+                <button type="submit">Update Comment</button>
+                <button type="button" onClick={cancelEditing}>
+                  Cancel
+                </button>
+              </form>
+            ) : (
+              <>
+                <p>{comment.text}</p>
+                {comment.userId === userId && (
+                  <>
+                    <button
+                      onClick={() => startEditing(comment._id, comment.text)}
+                    >
+                      Edit
+                    </button>
+                    <button onClick={() => handleDelete(comment._id)}>
+                      Delete
+                    </button>
+                  </>
+                )}
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
-            {/* Display comments */}
-            <ul className="comments-list">
-                {comments.map(comment => (
-                    <li key={comment._id}>
-                        <p><strong>{comment.username}</strong> <em>{new Date(comment.date).toLocaleString()}</em></p>
-                        <p>{comment.text}</p>
-
-                        {/* Show buttons for editing or deleting */}
-                        {userId === comment.userId && (
-                            <div>
-                                <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
-                                <button onClick={() => {
-                                    const updatedText = prompt('Edit your comment:', comment.text);
-                                    if (updatedText) handleEditComment(comment._id, updatedText);
-                                }}>Edit</button>
-                            </div>
-                        )}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
-};
-
-export default CommentSection;
+export default CommentSection

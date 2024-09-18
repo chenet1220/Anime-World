@@ -10,7 +10,7 @@ const AnimeGalleryPage = () => {
       .then(response => setAnimeList(response.data.data))
       .catch(error => console.error(error));
   }, []);
-
+console.log(animeList)
   return (
     <div>
       <h1>Anime Gallery</h1>
@@ -29,4 +29,3 @@ const AnimeGalleryPage = () => {
 };
 
 export default AnimeGalleryPage;
-

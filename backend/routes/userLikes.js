@@ -10,4 +10,3 @@ router.post('/like', ensureLoggedIn, likeAnime);
 router.get('/likes/:anime', getAnimeLikes);
 
 module.exports = router;
-
