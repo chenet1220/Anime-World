@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import CommentSection from './Comments'; // Import comment section
+
 
 const AnimeDetails = () => {
   const { animeId } = useParams();
@@ -26,13 +28,7 @@ const AnimeDetails = () => {
           <p>{anime.synopsis}</p>
         </>
       )}
-      <div>
-        {comments.map(comment => (
-          <div key={comment._id}>
-            <p>{comment.text} - Rating: {comment.rating}</p>
-          </div>
-        ))}
-      </div>
+      <CommentSection comments={comments} />
     </div>
   );
 };

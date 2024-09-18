@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const animeRoutes = require('./routes/anime');
 const authRoutes = require('./routes/auth');
-const commentRoutes = require('./routes/comments');
 const cors = require('cors');
+const commentRoutes = require('./routes/comments');
 const likeRoutes = require('./routes/userLikes');
 
 // Initialize environment variables
