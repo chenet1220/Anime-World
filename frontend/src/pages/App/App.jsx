@@ -37,30 +37,30 @@
 
 // export default App;
 
-
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import AnimeGalleryPage from '../AnimeGalleryPage';
-import AnimeDetails from '../AnimeDetails';
-import LoginPage from '../LogInPage/LogInPage';
-import SignUpPage from '../SignUpPage/SignUpPage';
-import NavBar from '../../components/NavBar/NavBar';
+import React, { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { getUser } from '../../services/authService';
+import AnimeGalleryPage from '../AnimeGalleryPage'
+import AnimeDetails from '../AnimeDetails'
+import LoginPage from '../LogInPage/LogInPage'
+import SignUpPage from '../SignUpPage/SignUpPage'
+import NavBar from '../../components/NavBar/NavBar'
+import HomePage from '../HomePage/HomePage'
 
 function App() {
+  const [user, setUser] = useState(getUser())
   return (
     <>
-    <NavBar />
-    <Routes>
-  
-        <Route path="/" element={<AnimeGalleryPage />} />
+      <NavBar user={user} />
+      <Routes>
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/anime/gallery" element={<AnimeGalleryPage />} />
         <Route path="/anime/:animeId" element={<AnimeDetails />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-  
-    </Routes>
+        <Route path="/login" element={<LoginPage setUser={setUser} />} />
+        <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
+      </Routes>
     </>
-  );
+  )
 }
 
-export default App;
-
+export default App

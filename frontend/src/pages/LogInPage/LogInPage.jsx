@@ -1,35 +1,8 @@
 import { useState } from 'react';
 import * as authService from '../../services/authService';
 
-import { useNavigate } from "react-router-dom";  // new line above 
+import { useNavigate } from "react-router-dom";  
 
-//////////
-
-function LoginPage() {
-  const navigate = useNavigate();
-
-  const handleLogin = async (event) => {
-    event.preventDefault();
-    // Make API call for login
-    const response = await loginUser(credentials);
-
-    if (response.success) {
-      // Redirect to Anime Gallery
-      navigate("/anime-gallery");
-    } else {
-      // Handle login failure
-    }
-  };
-
-  return (
-    <form onSubmit={handleLogin}>
-      {/* Form fields */}
-      <button type="submit">Login</button>
-    </form>
-  );
-}
-
-//////////////
 
 export default function LogInPage({ setUser }) {
   const [formData, setFormData] = useState({
@@ -37,12 +10,18 @@ export default function LogInPage({ setUser }) {
     password: '',
   });
   const [errorMsg, setErrorMsg] = useState('');
+  const navigate = useNavigate(); 
 
   async function handleSubmit(evt) {
+    console.log('handleSubmit');
+    console.log('formData:', formData);
     evt.preventDefault();
     try {
       const user = await authService.logIn(formData);
       setUser(user);
+      console.log('user:', user);
+      console.log('should now navigate to /');
+      navigate("/");
     } catch (err) {
       // An error occurred
       setErrorMsg('Log In Failed - Try Again');

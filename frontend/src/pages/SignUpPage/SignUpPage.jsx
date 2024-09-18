@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as authService from '../../services/authService';
+import { useNavigate } from "react-router-dom";  
 
 export default function SignUpPage({ setUser }) {
   const [formData, setFormData] = useState({
@@ -9,12 +10,14 @@ export default function SignUpPage({ setUser }) {
     confirm: '',
   });
   const [errorMsg, setErrorMsg] = useState('');
+  const navigate = useNavigate();
 
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
       const user = await authService.signUp(formData);
       setUser(user);
+      navigate('/');
     } catch (err) {
       // An error occurred
       console.log(err);

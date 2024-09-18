@@ -14,8 +14,8 @@ export default function HomePage() {
         <div className="flex-item info-box">
           <h1>What's Your Favorite Anime?</h1>
           <p>
-            Explore the huge variety of popular anime the app has to offer, from the
-            popular classics like Naruto, Bleach, and One Piece to even the new anime
+            Take a journey in to the Wide catalog of the Best Anime app has to offer, from the
+            popular classics such as Naruto, Bleach, and One Piece to even the newer anime
             such as Kaiju No. 8 and Windbreaker.
           </p>
         </div>
