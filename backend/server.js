@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth');
 const cors = require('cors');
 const commentRoutes = require('./routes/comments');
 const likeRoutes = require('./routes/userLikes');
+const path = require('path');
 
 // Initialize environment variables
 dotenv.config();
