@@ -1,4 +1,4 @@
-#react-app {
+ #react-app {
   display: grid;
   grid-template-rows: auto auto;
 }
@@ -8,4 +8,5 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
+

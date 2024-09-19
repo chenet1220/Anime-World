@@ -7,6 +7,6 @@ const ensureLoggedIn = require('../middleware/ensureLoggedIn');
 router.post('/like', ensureLoggedIn, likeAnime);
 
 // route to get total likes for an anime
-router.get('/likes/:anime', getAnimeLikes);
+router.get('/:anime/likes', getAnimeLikes);
 
 module.exports = router;
