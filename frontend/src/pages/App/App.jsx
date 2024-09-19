@@ -8,6 +8,7 @@ import SignUpPage from '../SignUpPage/SignUpPage'
 import NavBar from '../../components/NavBar/NavBar'
 import HomePage from '../HomePage/HomePage'
 
+
 function App() {
   const [user, setUser] = useState(getUser())
 
