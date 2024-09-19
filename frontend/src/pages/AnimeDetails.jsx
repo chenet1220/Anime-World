@@ -9,31 +9,41 @@ const AnimeDetails = ({ username, userId }) => {
   const { animeId } = useParams()
   const [anime, setAnime] = useState(null)
   const [comments, setComments] = useState([])
+  const [likes, setLikes] = useState(null)
+  const [isLiked, setIsLiked] = useState(false)
 
   useEffect(() => {
-    animeService
-      .getAnimeDetails(animeId)
-      .then((anime) => setAnime(anime))
-      .catch((error) => console.error(error))
+    const fetchData = async () => {
+      try {
+        const anime = await animeService.getAnimeDetails(animeId);
+        setAnime(anime);
 
-    commentService
-      .getComments(animeId)
-      .then((comments) => setComments(comments))
-      .catch((error) => console.error(error))
-  }, [animeId])
+        const comments = await commentService.getComments(animeId);
+        setComments(comments);
 
+        const likes = await likesService.getuserLikes(animeId);
+        setLikes(likes.likes);
+        setIsLiked(likes.likes.some((like) => like.userId.toString() === userId));
+      } catch (error) {
+        console.error('Failed to fetch data', error);
+      }
+    };
+
+    fetchData();
+  }, [animeId, userId, isLiked]);
 
   const handlelike = async () => {
-    const animeLikes = await likesService.postuserLikes ({anime:anime.title})
+    const animeLikes = await likesService.postuserLikes({ anime: animeId })
+    setIsLiked(!isLiked)
   }
-  
-return (
+
+  return (
     <div>
       {anime && (
         <>
           <h1>{anime.title}</h1>
           <img src={anime.images.jpg.image_url} alt={anime.title} />
-          <button onClick={handlelike}>Like</button>
+          <button onClick={handlelike}>{isLiked ? 'Unlike' : 'Like'}</button>
           <p>{anime.synopsis}</p>
         </>
       )}
