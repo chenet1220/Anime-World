@@ -1,4 +1,4 @@
- #react-app {
+#react-app {
   display: grid;
   grid-template-rows: auto auto;
 }
@@ -9,4 +9,3 @@
   justify-content: center;
   align-items: center;
 } 
-

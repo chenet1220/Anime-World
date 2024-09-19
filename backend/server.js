@@ -6,7 +6,6 @@ const authRoutes = require('./routes/auth');
 const cors = require('cors');
 const commentRoutes = require('./routes/comments');
 const likeRoutes = require('./routes/userLikes');
-const path = require('path');
 
 // Initialize environment variables
 dotenv.config();
@@ -27,13 +26,6 @@ app.use('/api/anime', animeRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/userLikes', likeRoutes);
-
-
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
-});
 
 
 const port = process.env.PORT || 3000;
