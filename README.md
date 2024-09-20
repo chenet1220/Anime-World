@@ -24,7 +24,7 @@ Welcome to ***ANIME WORLD!*** 😎 If you Love Anime Then you Came to the Right 
 - **Dynamic Rendering**: Enjoy a visually appealing layout that gives you an inviting Anime feel While browsering 
 
 ## Live Demo
-Try out the application here: [Anime World by Chris Chenet]()
+Try out the application here: [Anime World by Chris Chenet](https://anime-world-ae62cfab2b49.herokuapp.com/)
 
 ## Technologies Used
 - **Frontend**: 
@@ -38,6 +38,7 @@ Try out the application here: [Anime World by Chris Chenet]()
 - **Database**: 
   - MongoDB 
   - Mongoose
+  - jikan api 
 - **Styling**: 
   - Flexbox 
   - Grid Layout 
