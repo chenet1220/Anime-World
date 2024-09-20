@@ -35,7 +35,7 @@ export default function LogInPage({ setUser }) {
 
   return (
     <>
-      <h2>Log In!</h2>
+      <h2>Log In!🖥️</h2>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label>Email</label>
         <input
@@ -45,7 +45,7 @@ export default function LogInPage({ setUser }) {
           onChange={handleChange}
           required
         />
-        <label>Password</label>
+        <label>Password🤐</label>
         <input
           type="password"
           name="password"
@@ -53,7 +53,7 @@ export default function LogInPage({ setUser }) {
           onChange={handleChange}
           required
         />
-        <button type="submit">LOG IN</button>
+        <button type="submit">LOG IN👋</button>
       </form>
       <p className="error-message">&nbsp;{errorMsg}</p>
     </>

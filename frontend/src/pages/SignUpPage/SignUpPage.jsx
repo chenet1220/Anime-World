@@ -69,7 +69,7 @@ export default function SignUpPage({ setUser }) {
           required
         />
         <button type="submit" disabled={disable}>
-          SIGN UP
+          SIGN UP✍️
         </button>
       </form>
       <p className="error-message">&nbsp;{errorMsg}</p>

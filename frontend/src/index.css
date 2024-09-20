@@ -1,112 +1,22 @@
- /* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color: #1a1a1a;
-  background-color: whitesmoke;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-}
-
+/* Apply the new background to the entire body */
 body {
+  background-image: url('https://wallpapers.com/images/hd/yellow-orange-anime-scenery-zukqvn7cl3j47aho.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Arial', sans-serif; /* You can use any anime-styled font */
+  color: white; /* Light color for readability */
   margin: 0;
-  min-height: 100vh;
+  padding: 0;
 }
 
-h1, h2 {
-  text-align: center;
-}
-
-button {
-  border: 0.5vmin solid red;
-  border-radius: 0.5vmin;
-  padding: 0.8vmin;
-  font-size: 2vmin;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  color: whitesmoke;
-  cursor: pointer;
-}
-button:hover {
-  background-color: white;
-  color: #1a1a1a;
-  border-color: #1a1a1a;
-}
-button:disabled {
-  background-color: grey;
-}
-
-a {
-  border-radius: 0.8vmin;
-  padding: 0.5vmin;
-  font-size: 2vmin;
-  text-decoration: none;
-  color: #1a1a1a;
-}
-
-a:hover {
-  background-color: #1a1a1a;
-  color: whitesmoke;
-}
-
-form {
-  display: grid;
-  gap: 1.2vmin;
-  padding: 4vmin;
-  border: 0.5vmin solid #1a1a1a;
-  border-radius: 1vmin;
-}
-
-input {
-  padding: 0.7vmin;
-  font-size: 2vmin;
-  border: 0.3vmin solid #1a1a1a;
-  border-radius: 0.5vmin;
-}
-
-form > button:last-child {
-  margin-top: 2vmin;
-}
-
-label {
-  font-size: 2vmin;
-  font-weight: bold;
-}
-
-h2 {
-  text-align: center;
-}
-
-.error-message {
-  color: rgb(166, 29, 29);
-}  */
-
-
-
-/* Common login and signup styles */
-
-
-/* General Styles for Forms (Login and Signup Pages) */
-
-/* General Styles for Forms (Login and Signup Pages) */
-
-
-/* General Styles for Forms (Login and Signup Pages) */
-
+/* Main form container with the original NavBar background image */
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('https://imgcdn.stablediffusionweb.com/2024/3/4/442ae9e8-8518-413c-b7d0-5fb2a7404e88.jpg'); /* Background Image from NavBar */
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  background-image: url('https://i.imgur.com/RFAAIge.png'); /* Original NavBar background */
   background-size: cover;
   background-position: center;
   padding: 30px;
@@ -114,22 +24,24 @@ form {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 20px auto;
   text-align: center;
 }
 
+/* Form headings and labels */
 form h2 {
   font-size: 2em;
-  color: #ff6699; /* Anime pink for titles */
+  color: #ffc0cb; /* Light pink, matching the anime theme */
   margin-bottom: 20px;
 }
 
 form label {
   font-size: 1.2em;
-  color: #ffffff; /* White text for contrast */
+  color: #ffffff; /* White for contrast */
   margin: 10px 0;
 }
 
+/* Input field styling */
 input {
   padding: 12px;
   margin: 10px 0;
@@ -141,14 +53,15 @@ input {
 }
 
 input:focus {
-  border-color: #ffcc00;
-  box-shadow: 0 0 10px #ffcc00;
+  border-color: #ffd700; /* Gold border when focused */
+  box-shadow: 0 0 10px #ffd700; /* Gold glow effect */
 }
 
+/* Button styling */
 button {
   padding: 12px 25px;
   border: none;
-  background-color: #ff6699;
+  background-color: #ff99cc; /* Light pink */
   color: white;
   font-size: 1.2em;
   border-radius: 50px;
@@ -158,22 +71,23 @@ button {
 }
 
 button:hover {
-  background-color: #ffcc00;
+  background-color: #ffd700; /* Gold on hover */
   transform: scale(1.05);
 }
 
+/* Error message styling */
 .error-message {
-  color: red;
+  color: #ff4c4c; /* Red for error messages */
   font-size: 1.1em;
   margin-top: 15px;
 }
 
 /* AnimeDetails Page Styles */
-
 .anime-details {
   text-align: center;
   padding: 20px;
-  background-image: url('https://imgcdn.stablediffusionweb.com/2024/3/4/442ae9e8-8518-413c-b7d0-5fb2a7404e88.jpg'); /* Background Image from NavBar */
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  background-image: url('https://imgcdn.stablediffusionweb.com/2024/3/4/442ae9e8-8518-413c-b7d0-5fb2a7404e88.jpg'); /* Original NavBar background */
   background-size: cover;
   background-position: center;
   border-radius: 15px;
@@ -182,7 +96,7 @@ button:hover {
 
 .anime-details h1 {
   font-size: 2.5em;
-  color: #ff6699;
+  color: #ff99cc; /* Light pink */
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -196,7 +110,7 @@ button:hover {
 .anime-details button {
   padding: 10px 20px;
   font-size: 1.2em;
-  background-color: #ff6699;
+  background-color: #ff99cc;
   color: white;
   border-radius: 50px;
   border: none;
@@ -205,40 +119,37 @@ button:hover {
 }
 
 .anime-details button:hover {
-  background-color: #ffcc00;
+  background-color: #ffd700; /* Gold on hover */
   transform: scale(1.05);
 }
 
 .anime-details p {
   font-size: 1.2em;
-  color: #333;
+  color: #333; /* Dark text for contrast */
   margin-top: 20px;
   line-height: 1.6;
 }
 
 /* AnimeGalleryPage Styles */
-
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Center items horizontally */
-  gap: 20px; /* Space between each item */
+  justify-content: center;
+  gap: 20px;
   padding: 20px;
 }
 
 .gallery-item {
-  background-image: url('https://imgcdn.stablediffusionweb.com/2024/3/4/442ae9e8-8518-413c-b7d0-5fb2a7404e88.jpg'); /* Background Image from NavBar */
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  background-image: url('https://imgcdn.stablediffusionweb.com/2024/3/4/442ae9e8-8518-413c-b7d0-5fb2a7404e88.jpg'); /* Original NavBar background */
   background-size: cover;
   background-position: center;
   padding: 15px;
-  width: 200px; /* Fixed width for each anime card */
+  width: 200px;
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center content within the card */
 }
 
 .gallery-item:hover {
@@ -254,13 +165,13 @@ button:hover {
 .gallery-item h3 {
   margin-top: 15px;
   font-size: 1.5em;
-  color: #ff6699;
+  color: #ff99cc; /* Light pink */
 }
 
 /* Comment Section Styles */
-
 .comment-section {
-  background-image: url('https://imgcdn.stablediffusionweb.com/2024/3/4/442ae9e8-8518-413c-b7d0-5fb2a7404e88.jpg'); /* Background Image from NavBar */
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSEXas9feI7qc12-so5NRw9jucI7cndVaH7g&s'); /* Original NavBar background */
   background-size: cover;
   background-position: center;
   padding: 20px;
@@ -273,7 +184,7 @@ button:hover {
 
 .comment-section h2 {
   font-size: 2em;
-  color: #ff6699;
+  color: #ff99cc; /* Light pink */
   text-align: center;
 }
 
@@ -286,9 +197,9 @@ button:hover {
 }
 
 /* Search Box Styles */
-
 .search-box {
-  background-image: url('https://imgcdn.stablediffusionweb.com/2024/3/4/442ae9e8-8518-413c-b7d0-5fb2a7404e88.jpg'); /* Background Image from NavBar */
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  background-image: url('https://imgcdn.stablediffusionweb.com/2024/3/4/442ae9e8-8518-413c-b7d0-5fb2a7404e88.jpg'); /* Original NavBar background */
   background-size: cover;
   background-position: center;
   padding: 20px;
@@ -310,17 +221,15 @@ button:hover {
 .search-box button {
   padding: 12px 20px;
   border: none;
-  background-color: #ff6699;
+  background-color: #ff99cc; /* Light pink */
   color: white;
   font-size: 1.1em;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-radius: 50px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
 .search-box button:hover {
-  background-color: #ffcc00;
+  background-color: #ffd700; /* Gold on hover */
   transform: scale(1.05);
 }
-
-

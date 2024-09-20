@@ -93,7 +93,7 @@ const CommentSection = ({
                 />
                 <button type="submit">Update Comment</button>
                 <button type="button" onClick={cancelEditing}>
-                  Cancel
+                  Cancel🚫
                 </button>
               </form>
             ) : (
@@ -104,10 +104,10 @@ const CommentSection = ({
                     <button
                       onClick={() => startEditing(comment._id, comment.text)}
                     >
-                      Edit
+                      Edit✍️
                     </button>
                     <button onClick={() => handleDelete(comment._id)}>
-                      Delete
+                      Delete❌
                     </button>
                   </>
                 )}
