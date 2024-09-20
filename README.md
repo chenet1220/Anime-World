@@ -1,5 +1,5 @@
 # ANIME WORLD
-Welcome to ***ANIME WORLD!*** 😎 If you Love Anime Then you Came to the Right Place My Friend. This application is designed to help users review Anime from the old populars to the New., Make comments on Anime you like and give your personal opinon  
+Welcome to ***ANIME WORLD!*** 😎 If you Love Anime Then you Came to the Right Place My Friend. This application is designed to help users review Anime from the old populars to the New from Jiakn api . Make comments on Anime you like and give your personal opinon  
 *Screenshot of the Anime World landing page.*
 
 ![Anime World Home Page](https://i.imgur.com/FWV24FB.png)
