@@ -11,7 +11,7 @@ const AnimeDetails = ({ username, userId }) => {
   const [comments, setComments] = useState([])
   const [likes, setLikes] = useState(null)
   const [isLiked, setIsLiked] = useState(false)
-
+console.log(anime)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,6 +22,7 @@ const AnimeDetails = ({ username, userId }) => {
         setComments(comments);
 
         const likes = await likesService.getuserLikes(animeId);
+        console.log(likes)
         setLikes(likes.likes);
         setIsLiked(likes.likes.some((like) => like.userId.toString() === userId));
       } catch (error) {

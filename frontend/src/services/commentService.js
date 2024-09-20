@@ -5,6 +5,7 @@ const BASE_URL = "/api/comments";
 export async function getComments(animeId) {
   try {
     const comments = await sendRequest(`${BASE_URL}/anime/${animeId}`);
+    console.log(comments);
     return comments;
   } catch (error) {
     throw error;

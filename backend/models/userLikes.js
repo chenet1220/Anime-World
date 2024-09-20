@@ -23,11 +23,3 @@ module.exports = UserLikes;
 
 
 
-
-
-
-
-
-
-
-
