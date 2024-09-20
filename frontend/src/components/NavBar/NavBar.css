@@ -3,8 +3,78 @@
   justify-content: space-around;
   align-items: center;
   padding: 2vmin;
+  background: linear-gradient(135deg, rgba(255, 204, 0, 0.8), rgba(255, 102, 153, 0.8)), 
+              url('https://imgcdn.stablediffusionweb.com/2024/3/4/442ae9e8-8518-413c-b7d0-5fb2a7404e88.jpg'); /* Image with gradient overlay */
+  background-size: cover; /* Ensures the image covers the entire navbar */
+  background-blend-mode: overlay; /* Blend the gradient and the image */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow for drama */
+  border-radius: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  animation: pulse 4s infinite; /* Subtle pulsing effect */
+}
+
+/* Pulse animation for a subtle anime-like glow */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 15px 30px rgba(255, 105, 180, 0.6);
+  }
+  100% {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.NavBar a {
+  color: #ffffff; /* White text for high contrast */
+  text-decoration: none;
+  transition: all 0.4s ease;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 50px;
+  background: #ff6699; /* Button-like anime style */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glowing effect */
+  position: relative;
+}
+
+.NavBar a:hover {
+  background-color: #ffcc00;
+  color: #000000;
+  transform: translateY(-5px) rotate(-3deg); /* Fun tilt and bounce effect */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 10px #ffcc00; /* Glowing anime effect */
 }
 
 .NavBar span {
-  color: rgb(108, 9, 87);
+  color: #ffd700; /* Gold for an anime-like "VIP" feeling */
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.NavBar span::before {
+  content: "✨ "; /* Anime sparkle before the user's name */
+}
+
+.NavBar a::after {
+  content: ''; 
+  position: absolute;
+  width: 0;
+  height: 4px;
+  background-color: white;
+  bottom: 0;
+  left: 0;
+  transition: all 0.4s ease;
+}
+
+.NavBar a:hover::after {
+  width: 100%;
+}
+
+.NavBar a:active {
+  transform: scale(1.05) rotate(0);
+}
+
+.NavBar a + a {
+  margin-left: 15px;
 }
